@@ -1,19 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #b1ebef;
-  --foreground: #0f222d;
+  --color-light: #b1ebef;
+  --color-dark: #0f222d;
   --color-primary: #00c4cc;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f222d;
-    --foreground: #b1ebef;
-  }
+@theme {
+  --color-light: #b1ebef;
+  --color-dark: #0f222d;
+  --color-primary: #00c4cc;
 }
 
-/* For root elements always occupy the full viewport */
 html,
 body {
   min-height: 100%;
@@ -21,8 +19,8 @@ body {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-dark);
+  color: var(--color-light);
 }
 
 ::-webkit-scrollbar {
