@@ -74,7 +74,7 @@ const Sidebar = ({ expand, setExpand }) => {
       {/* bottom buttons */}
       <div>
         <div
-          className={`flex items-center cursor-pointer group relative ${expand ? "gap-1 text-white/80 text-sm p-2.5 border border-primary rounded-lg hover:bg-light/30 cursor-pointer" : "h-10 w-10 mx-auto hover:bg-gray-500/30 rounded-lg"}`}
+          className={`flex items-center cursor-pointer group relative ${expand ? "gap-1 text-white/80 text-sm p-2.5 border border-primary/50 rounded-lg hover:bg-light/30 cursor-pointer" : "h-10 w-10 mx-auto hover:bg-gray-500/30 rounded-lg"}`}
         >
           <Image
             className={expand ? "w-5" : "mx-auto w-6.5"}
@@ -98,6 +98,14 @@ const Sidebar = ({ expand, setExpand }) => {
               <Image alt="" src={assets.new_icon} />
             </>
           )}
+        </div>
+
+        {/* user account button */}
+        <div
+          className={`flex items-center ${expand ? "bg-primary/50 rounded-lg hover:bg-primary/70" : "justify-center w-full"} gap-4 text-light/60 text-sm px-3 py-2 mt-2 cursor-pointer`}
+        >
+          <Image src={assets.profile_icon} alt="" className="w-7" />
+          {expand && <span className="text-gray-300">My Profile</span>}
         </div>
       </div>
     </div>
