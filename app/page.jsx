@@ -45,7 +45,7 @@ export default function Home() {
 
           {/* prompt box */}
           <p className="text-xs absolute bottom-1 text-dark/80">
-            Ai-generated, for reference only
+            AI-generated, for reference only
           </p>
         </div>
       </div>

@@ -7,14 +7,14 @@ const Sidebar = ({ expand, setExpand }) => {
     <div
       className={`flex flex-col justify-between bg-dark/80 backdrop-blur-md py-5 transition-all z-50 max-md:absolute max-md:h-screen ${expand ? "p-4 w-72" : "md:w-18 w-0 max-md:overflow-hidden items-center"}`}
     >
-      <div className="flex flex-col gap-4 items-center">
+      <div className="flex flex-col gap-4">
         <div
           className={`flex ${expand ? "justify-between items-center" : "flex-col items-center gap-6"}`}
         >
           {/* logo/branding */}
           <Image
             className={
-              expand ? "w-48 -top-2 -translate-x-4 relative" : "w-10 rounded-md"
+              expand ? "w-48 -top-1 -translate-x-2 relative" : "w-10 rounded-md"
             }
             src={expand ? assets.logo_text : assets.logo_icon_black}
             alt="logo"
@@ -63,6 +63,42 @@ const Sidebar = ({ expand, setExpand }) => {
           {/* expanded button text */}
           {expand && <p className="text-light font-medium">New Chat</p>}
         </button>
+
+        {/* recent topics list */}
+        <div className={`text-white/25 text-sm ${expand ? "block" : "hidden"}`}>
+          <p>Recent</p>
+          {/* chat label */}
+        </div>
+      </div>
+
+      {/* bottom buttons */}
+      <div>
+        <div
+          className={`flex items-center cursor-pointer group relative ${expand ? "gap-1 text-white/80 text-sm p-2.5 border border-primary rounded-lg hover:bg-light/30 cursor-pointer" : "h-10 w-10 mx-auto hover:bg-gray-500/30 rounded-lg"}`}
+        >
+          <Image
+            className={expand ? "w-5" : "mx-auto w-6.5"}
+            src={expand ? assets.phone_icon : assets.phone_icon_dull}
+            alt=""
+          />
+          <div
+            className={`absolute -top-60 pb-8 ${!expand && "-right-40"} opacity-0 group-hover:opacity-100 hidden group-hover:block transition`}
+          >
+            <div className="relative w-max bg-primary text-dark text-sm p-3 rounded-lg shadow-lg">
+              <Image src={assets.qrcode} alt="QR Code" className="w-44" />
+              <p className="pt-2">Scan to visit GitHub Repo.</p>
+              <div
+                className={`w-3 h-3 absolute bg-primary rotate-45 ${expand ? "right-1/2" : "left-4"} -bottom-1.5`}
+              ></div>
+            </div>
+          </div>
+          {expand && (
+            <>
+              <span className="px-1 text-light">Visit GitHub Repository</span>
+              <Image alt="" src={assets.new_icon} />
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
