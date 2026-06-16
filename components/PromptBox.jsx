@@ -7,7 +7,7 @@ const PromptBox = ({ isLoading, setIsLoading }) => {
 
   return (
     <form
-      className={`w-full ${false ? "max-w-3xl" : "max-w-2xl"} bg-dark/20 backdrop-blur-md rounded-2xl p-4 mt-4 transition-all`}
+      className={`w-full ${false ? "max-w-3xl" : "max-w-2xl"} bg-dark/20 backdrop-blur-md rounded-2xl p-4 mt-8 transition-all`}
     >
       <textarea
         name="prompt"
@@ -19,7 +19,7 @@ const PromptBox = ({ isLoading, setIsLoading }) => {
         value={prompt}
       />
 
-      <div className="flex items-center justify-between text-sm">
+      <div className="flex items-center justify-between text-sm mt-2">
         {/* Input Buttons */}
         <div className="flex items-center gap-2">
           <p className="flex items-center gap-2 text-xs border bg-dark text-light border-dark/80 px-3 py-1 rounded-full cursor-pointer opacity-80 hover:opacity-100 transition">
