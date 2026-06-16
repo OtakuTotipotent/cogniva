@@ -1,5 +1,6 @@
 "use client";
 import { assets } from "@/assets/assets";
+import Sidebar from "@/components/Sidebar";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -11,8 +12,8 @@ export default function Home() {
   return (
     <div>
       <div className="flex h-screen">
-        {/* sidebar */}
-        <div className="flex-1 flex flex-col items-center justify-center px-4 pb-8 bg-dark text-primary relative">
+        <Sidebar expand={expand} setExpand={setExpand} />
+        <div className="flex-1 flex flex-col items-center justify-center px-4 pb-8 bg-light text-dark relative">
           <div className="md:hidden absolute px-4 top-6 flex items-center justify-between w-full">
             <Image
               onClick={() => (expand ? setExpand(false) : setExpand(true))}
@@ -28,20 +29,22 @@ export default function Home() {
           </div>
           {messages.length === 0 ? (
             <>
-              <div className="flex items-center gap-3">
-                <Image src={assets.logo_icon} alt="" className="w-16" />
-                <p className="text-2xl font-medium">Welcome to Cogniva!</p>
+              <div className="flex items-center gap-3 select-none cursor-default">
+                <Image
+                  src={assets.logo_icon_black}
+                  alt=""
+                  className="w-14 rounded-2xl"
+                />
+                <p className="text-2xl font-semibold">Welcome to Cogniva!</p>
               </div>
-              <p className="text-sm mt-2">
-                Nice to see you. How can I help you today?
-              </p>
+              <p className="text-sm mt-2 font-semibold">How can I help you?</p>
             </>
           ) : (
             <div></div>
           )}
 
           {/* prompt box */}
-          <p className="text-xs absolute bottom-1 text-gray-500">
+          <p className="text-xs absolute bottom-1 text-dark/80">
             Ai-generated, for reference only
           </p>
         </div>

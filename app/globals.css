@@ -19,8 +19,8 @@ body {
 }
 
 body {
-  background: var(--color-dark);
-  color: var(--color-light);
+  background: var(--color-light);
+  color: var(--color-dark);
 }
 
 ::-webkit-scrollbar {
