@@ -1,8 +1,15 @@
+"use client";
+
 import { assets } from "@/assets/assets";
 import Image from "next/image";
 import React from "react";
+import { useClerk, UserButton } from "@clerk/nextjs";
+import { useAppContext } from "@/config/AppContext";
 
 const Sidebar = ({ expand, setExpand }) => {
+  const { openSignIn } = useClerk();
+  const { user } = useAppContext();
+
   return (
     <div
       className={`flex flex-col justify-between bg-dark/80 backdrop-blur-md py-5 transition-all z-50 max-md:absolute max-md:h-screen ${expand ? "p-4 w-72" : "md:w-18 w-0 max-md:overflow-hidden items-center"}`}
@@ -102,14 +109,24 @@ const Sidebar = ({ expand, setExpand }) => {
 
         {/* user account button */}
         <div
+          onClick={user ? null : openSignIn}
           className={`flex items-center ${expand ? "bg-primary/50 rounded-lg hover:bg-primary/70" : "justify-center w-full"} gap-4 text-light/60 text-sm px-3 py-2 mt-2 cursor-pointer`}
         >
-          <Image src={assets.profile_icon} alt="" className="w-7" />
-          {expand && <span className="text-gray-300">My Profile</span>}
+          {user ? (
+            <UserButton />
+          ) : (
+            <Image src={assets.profile_icon} alt="" className="w-7" />
+          )}
+
+          {expand && (
+            <span className="text-gray-300">
+              {" "}
+              {user?.firstName || "Guest User"}{" "}
+            </span>
+          )}
         </div>
       </div>
     </div>
   );
 };
-
 export default Sidebar;
