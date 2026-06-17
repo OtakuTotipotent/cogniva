@@ -2,17 +2,19 @@
 
 import { assets } from "@/assets/assets";
 import Image from "next/image";
-import React from "react";
+import { useState } from "react";
 import { useClerk, UserButton } from "@clerk/nextjs";
 import { useAppContext } from "@/config/AppContext";
+import ChatLabel from "./ChatLabel";
 
 const Sidebar = ({ expand, setExpand }) => {
   const { openSignIn } = useClerk();
   const { user } = useAppContext();
+  const [openMenu, setOpenMenu] = useState({ id: 0, open: false });
 
   return (
     <div
-      className={`flex flex-col justify-between bg-dark/80 backdrop-blur-md py-5 transition-all z-50 max-md:absolute max-md:h-screen ${expand ? "p-4 w-72" : "md:w-18 w-0 max-md:overflow-hidden items-center"}`}
+      className={`flex flex-col justify-between bg-dark/70 backdrop-blur-lg py-5 transition-all z-50 max-md:absolute max-md:h-screen ${expand ? "p-4 w-72" : "md:w-18 w-0 max-md:overflow-hidden items-center"}`}
     >
       <div className="flex flex-col gap-4">
         <div
@@ -55,7 +57,7 @@ const Sidebar = ({ expand, setExpand }) => {
 
         {/* new chat button */}
         <button
-          className={`flex justify-center cursor-pointer ${expand ? "w-full bg-dark hover:opacity-70 rounded-lg gap-3 p-2.5" : "group relative h-9 w-9 hover:bg-gray-500/30 rounded-lg"}`}
+          className={`flex justify-center items-center cursor-pointer ${expand ? "w-fit text-light hover:bg-dark/70 bg-dark/50 rounded-lg gap-3 py-2 px-4 transition" : "group relative h-9 w-9 hover:bg-gray-500/30 rounded-lg"}`}
         >
           <Image
             src={expand ? assets.chat_icon : assets.chat_icon_dull}
@@ -68,20 +70,20 @@ const Sidebar = ({ expand, setExpand }) => {
             <div className="w-3 h-3 absolute bg-primary rotate-45 left-4 -bottom-1.5"></div>
           </div>
           {/* expanded button text */}
-          {expand && <p className="text-light font-medium">New Chat</p>}
+          {expand && <p>New chat</p>}
         </button>
 
-        {/* recent topics list */}
+        {/* recent chats */}
         <div className={`text-white/25 text-sm ${expand ? "block" : "hidden"}`}>
-          <p>Recent</p>
-          {/* chat label */}
+          <p className="my-2 ml-2 text-primary cursor-default">Recent Chats</p>
+          <ChatLabel openMenu={openMenu} setOpenMenu={setOpenMenu} />
         </div>
       </div>
 
       {/* bottom buttons */}
       <div>
         <div
-          className={`flex items-center cursor-pointer group relative ${expand ? "gap-1 text-white/80 text-sm p-2.5 border border-primary/50 rounded-lg hover:bg-light/30 cursor-pointer" : "h-10 w-10 mx-auto hover:bg-gray-500/30 rounded-lg"}`}
+          className={`flex items-center cursor-pointer group relative ${expand ? "gap-1 text-primary text-sm p-2.5 border border-primary/70 rounded-lg hover:bg-primary/20 cursor-pointer" : "h-10 w-10 mx-auto hover:bg-gray-500/30 rounded-lg"}`}
         >
           <Image
             className={expand ? "w-5" : "mx-auto w-6.5"}
@@ -101,7 +103,7 @@ const Sidebar = ({ expand, setExpand }) => {
           </div>
           {expand && (
             <>
-              <span className="px-1 text-light">Visit GitHub Repository</span>
+              <span className="px-1 text-primary">Checkout source code</span>
               <Image alt="" src={assets.new_icon} />
             </>
           )}
@@ -110,7 +112,7 @@ const Sidebar = ({ expand, setExpand }) => {
         {/* user account button */}
         <div
           onClick={user ? null : openSignIn}
-          className={`flex items-center ${expand ? "bg-primary/50 rounded-lg hover:bg-primary/70" : "justify-center w-full"} gap-4 text-light/60 text-sm px-3 py-2 mt-2 cursor-pointer`}
+          className={`flex items-center ${expand ? "border border-primary/70 rounded-lg hover:bg-primary/20" : "justify-center w-full"} gap-4 text-light/60 text-sm px-3 py-2 mt-2 cursor-pointer`}
         >
           {user ? (
             <UserButton />
@@ -119,7 +121,7 @@ const Sidebar = ({ expand, setExpand }) => {
           )}
 
           {expand && (
-            <span className="text-gray-300">
+            <span className="text-primary tracking-wide">
               {" "}
               {user?.firstName || "Guest User"}{" "}
             </span>
