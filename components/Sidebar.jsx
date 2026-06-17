@@ -112,18 +112,18 @@ const Sidebar = ({ expand, setExpand }) => {
         {/* user account button */}
         <div
           onClick={user ? null : openSignIn}
-          className={`flex items-center ${expand ? "border border-primary/70 rounded-lg hover:bg-primary/20" : "justify-center w-full"} gap-4 text-light/60 text-sm px-3 py-2 mt-2 cursor-pointer`}
+          className={`flex items-center ${expand ? "border border-primary/70 rounded-lg hover:bg-primary/20" : "justify-center w-full"} gap-3 text-light/60 text-sm px-3 py-2 mt-2 cursor-pointer`}
         >
           {user ? (
             <UserButton />
           ) : (
-            <Image src={assets.profile_icon} alt="" className="w-7" />
+            <Image src={assets.profile_icon} alt="" className="w-6" />
           )}
 
           {expand && (
             <span className="text-primary tracking-wide">
               {" "}
-              {user?.firstName || "Guest User"}{" "}
+              {user?.firstName || "Click icon to login Cogniva"}{" "}
             </span>
           )}
         </div>
