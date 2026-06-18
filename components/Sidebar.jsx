@@ -23,7 +23,7 @@ const Sidebar = ({ expand, setExpand }) => {
           {/* logo/branding */}
           <Image
             className={
-              expand ? "w-48 -top-1 -translate-x-2 relative" : "w-10 rounded-md"
+              expand ? "w-48 -top-1 -translate-x-2 relative" : "w-10 rounded-full"
             }
             src={expand ? assets.logo_text : assets.logo_icon_black}
             alt="logo"
