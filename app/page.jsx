@@ -16,6 +16,7 @@ export default function Home() {
       <div className="flex h-screen">
         <Sidebar expand={expand} setExpand={setExpand} />
         <div className="flex-1 flex flex-col items-center justify-center px-4 pb-8 bg-light text-dark relative">
+          {/* menu open/close icons */}
           <div className="md:hidden absolute px-4 top-6 flex items-center justify-between w-full">
             <Image
               onClick={() => (expand ? setExpand(false) : setExpand(true))}
@@ -29,7 +30,8 @@ export default function Home() {
               alt=""
             />
           </div>
-          {messages.length == 0 ? (
+          {/* chat homepage */}
+          {messages.length === 0 ? (
             <>
               <div className="flex items-center gap-3 select-none cursor-default">
                 <Image
@@ -49,7 +51,8 @@ export default function Home() {
 
           <PromptBox isLoading={isLoading} setIsLoading={setIsLoading} />
 
-          <p className="text-xs absolute bottom-1 text-dark/80">
+          {/* footer */}
+          <p className="text-xs absolute bottom-1 text-dark select-none cursor-default">
             AI-generated, for reference only
           </p>
         </div>
