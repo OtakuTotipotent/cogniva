@@ -14,6 +14,8 @@ export async function POST(req) {
     }
 
     const { chatId, name } = await req.json();
+
+    await connectDB();
     await Chat.findOneAndUpdate(
       {
         _id: chatId,
