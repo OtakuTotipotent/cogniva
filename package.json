@@ -10,14 +10,21 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^7.5.3",
+    "axios": "^1.18.0",
+    "mongoose": "^9.7.1",
     "next": "16.2.9",
+    "openai": "^6.44.0",
+    "prismjs": "^1.30.0",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "react-hot-toast": "^2.6.0",
+    "react-markdown": "^10.1.0",
+    "svix": "^1.95.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^10.5.0",
+    "eslint": "^9.39.4",
     "eslint-config-next": "16.2.9",
     "tailwindcss": "^4"
   }
