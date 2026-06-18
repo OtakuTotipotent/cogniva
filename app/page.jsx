@@ -1,5 +1,6 @@
 "use client";
 import { assets } from "@/assets/assets";
+import Message from "@/components/Message";
 import PromptBox from "@/components/PromptBox";
 import Sidebar from "@/components/Sidebar";
 import Image from "next/image";
@@ -28,20 +29,22 @@ export default function Home() {
               alt=""
             />
           </div>
-          {messages.length === 0 ? (
+          {messages.length == 0 ? (
             <>
               <div className="flex items-center gap-3 select-none cursor-default">
                 <Image
                   src={assets.logo_icon_black}
                   alt=""
-                  className="w-14 rounded-2xl"
+                  className="w-12 rounded-full"
                 />
                 <p className="text-2xl font-semibold">Welcome to Cogniva!</p>
               </div>
               <p className="text-sm mt-2 font-semibold">How can I help you?</p>
             </>
           ) : (
-            <div></div>
+            <div>
+              <Message role="user" content="What is next js" />
+            </div>
           )}
 
           <PromptBox isLoading={isLoading} setIsLoading={setIsLoading} />

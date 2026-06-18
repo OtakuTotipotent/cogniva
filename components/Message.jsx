@@ -1,0 +1,77 @@
+import { assets } from "@/assets/assets";
+import Image from "next/image";
+
+const Message = ({ role, content }) => {
+  return (
+    <div className="flex flex-col items-center w-full max-w-3xl text-sm">
+      <div
+        className={`flex flex-col w-full mb-8 ${role === "user" && "items-end"}`}
+      >
+        <div
+          className={`group relative flex max-w-2xl p-4 rounded-xl ${role === "user" ? "bg-dark/20" : "gap-3 bg-dark/70"}`}
+        >
+          <div
+            className={`opacity-0 group-hover:opacity-100 absolute bg-dark py-2 px-3 rounded-md -bottom-10 ${role === "user" ? "right-2" : "left-2"} transition-all`}
+          >
+            {/* Action Icons */}
+            <div className="flex items-center gap-4 opacity-70">
+              {role === "user" ? (
+                <>
+                  <Image
+                    src={assets.copy_icon}
+                    alt=""
+                    className="w-4.5 cursor-pointer"
+                  />
+                  <Image
+                    src={assets.pencil_icon}
+                    alt=""
+                    className="w-4.5 cursor-pointer"
+                  />
+                </>
+              ) : (
+                <>
+                  <Image
+                    src={assets.copy_icon}
+                    alt=""
+                    className="w-4.5 cursor-pointer"
+                  />
+                  <Image
+                    src={assets.regenerate_icon}
+                    alt=""
+                    className="w-4.5 cursor-pointer"
+                  />
+                  <Image
+                    src={assets.like_icon}
+                    alt=""
+                    className="w-4 cursor-pointer"
+                  />
+                  <Image
+                    src={assets.dislike_icon}
+                    alt=""
+                    className="w-4 cursor-pointer"
+                  />
+                </>
+              )}
+            </div>
+          </div>
+          {role === "user" ? (
+            <span className="text-dark text-lg">{content}</span>
+          ) : (
+            <>
+              <Image
+                src={assets.logo_icon_black}
+                alt=""
+                className="h-10 w-10 border rounded-full absolute -top-5 -left-3"
+              />
+              <div className="space-y-4 w-full overflow-scroll text-light text-lg">
+                {content}
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Message;
