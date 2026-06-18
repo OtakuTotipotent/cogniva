@@ -4,7 +4,7 @@ import { assets } from "@/assets/assets";
 import Image from "next/image";
 import { useState } from "react";
 import { useClerk, UserButton } from "@clerk/nextjs";
-import { useAppContext } from "@/config/AppContext";
+import { useAppContext } from "@/context/AppContext";
 import ChatLabel from "./ChatLabel";
 
 const Sidebar = ({ expand, setExpand }) => {
@@ -23,7 +23,9 @@ const Sidebar = ({ expand, setExpand }) => {
           {/* logo/branding */}
           <Image
             className={
-              expand ? "w-48 -top-1 -translate-x-2 relative" : "w-10 rounded-full"
+              expand
+                ? "w-48 -top-1 -translate-x-2 relative"
+                : "w-10 rounded-full"
             }
             src={expand ? assets.logo_text : assets.logo_icon_black}
             alt="logo"
