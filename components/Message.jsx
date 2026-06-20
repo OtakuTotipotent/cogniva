@@ -1,8 +1,14 @@
 import { assets } from "@/assets/assets";
 import Image from "next/image";
 import Markdown from "react-markdown";
+import Prism from "prismjs";
+import { useEffect } from "react";
 
 const Message = ({ role, content }) => {
+  useEffect(() => {
+    Prism.highlightAll();
+  }, [content]);
+
   return (
     <div className="flex flex-col items-center w-full max-w-3xl text-sm">
       <div
