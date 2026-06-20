@@ -3,11 +3,17 @@ import Image from "next/image";
 import Markdown from "react-markdown";
 import Prism from "prismjs";
 import { useEffect } from "react";
+import { toast } from "react-hot-toast";
 
 const Message = ({ role, content }) => {
   useEffect(() => {
     Prism.highlightAll();
   }, [content]);
+
+  const copyMessage = () => {
+    navigator.clipboard.writeText(content);
+    toast.success("Message to clipboard");
+  };
 
   return (
     <div className="flex flex-col items-center w-full max-w-3xl text-sm">
@@ -25,6 +31,7 @@ const Message = ({ role, content }) => {
               {role === "user" ? (
                 <>
                   <Image
+                    onClick={copyMessage}
                     src={assets.copy_icon}
                     alt=""
                     className="w-4.5 cursor-pointer"
@@ -38,6 +45,7 @@ const Message = ({ role, content }) => {
               ) : (
                 <>
                   <Image
+                    onClick={copyMessage}
                     src={assets.copy_icon}
                     alt=""
                     className="w-4.5 cursor-pointer"
