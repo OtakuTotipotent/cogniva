@@ -1,5 +1,6 @@
 import { assets } from "@/assets/assets";
 import Image from "next/image";
+import Markdown from "react-markdown";
 
 const Message = ({ role, content }) => {
   return (
@@ -64,7 +65,7 @@ const Message = ({ role, content }) => {
                 className="h-10 w-10 border rounded-full absolute -top-5 -left-3"
               />
               <div className="space-y-4 w-full overflow-scroll text-light text-lg">
-                {content}
+                <Markdown>{content}</Markdown>
               </div>
             </>
           )}
