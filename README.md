@@ -2,6 +2,8 @@
 
 `(Cognition + Viva)`
 
+![cogniva homepage](./public/cogniva-Chatbot.png "Cogniva: AI Chatbot's Homepage")
+
 ## Getting Started
 
 First, download to your local workspace:
