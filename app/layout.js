@@ -16,10 +16,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.className} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
-        <ClerkProvider>
-          <AppContextProvider>
+    <ClerkProvider>
+      <AppContextProvider>
+        <html lang="en" className={`${inter.className} h-full antialiased`}>
+          <body className="min-h-full flex flex-col">
             <Toaster
               toastOptions={{
                 success: {
@@ -37,9 +37,9 @@ export default function RootLayout({ children }) {
               }}
             />
             {children}
-          </AppContextProvider>
-        </ClerkProvider>
-      </body>
-    </html>
+          </body>
+        </html>
+      </AppContextProvider>
+    </ClerkProvider>
   );
 }

@@ -42,6 +42,7 @@ export const AppContextProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log(data);
 
       if (data.success) {
         console.log(data.data);
